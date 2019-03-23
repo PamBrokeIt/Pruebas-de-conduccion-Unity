@@ -589,10 +589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  radioRueda: 0.4
-  suspLongMaxima: 0.1
   hoverForce: 1000
-  hoverHeight: 0
+  hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
 --- !u!1 &376395020
@@ -995,12 +993,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  radioRueda: 0.4
-  suspLongMaxima: 0.1
   hoverForce: 1000
-  hoverHeight: 0
+  hoverHeight: 0.5
   grounded: 0
-  hoverPoint: {fileID: 0}
+  hoverPoint: {fileID: 1100395614}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,10 +1481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  radioRueda: 0.4
-  suspLongMaxima: 0.1
   hoverForce: 1000
-  hoverHeight: 0
+  hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
 --- !u!1 &1119698474
@@ -2574,9 +2568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  radioRueda: 0.4
-  suspLongMaxima: 0.1
   hoverForce: 1000
-  hoverHeight: 0
+  hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
