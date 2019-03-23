@@ -11,8 +11,8 @@ public class CocheMotor : MonoBehaviour
     private float _aceleracion = 0f;
     private float _giro = 0f;
     
-    private Vector3 _w = Vector3.zero; //lo usaremos para calcular la vel de giro, w = velocidad angular
-    private Vector3 _v = Vector3.zero; //
+    private Vector3 giroVector = Vector3.zero; //lo usaremos para calcular la vel de giro, w = velocidad angular
+    private Vector3 velocidad = Vector3.zero; //esto es la velocidad
     private Animator anim; 
 
 
@@ -25,19 +25,19 @@ public class CocheMotor : MonoBehaviour
         set
         {
             _aceleracion = value;
-            _v.z += _aceleracion;
+            velocidad.z += _aceleracion;
             anim.SetFloat("aceleracion", _aceleracion);
-            if(_v.z > 0)
+            if(velocidad.z > 0)
             {
-                _v.z -= .1f;
-                if(_v.z > 20f)
+                velocidad.z -= .1f;
+                if(velocidad.z > 20f)
                 {
-                    _v.z = 20f;
+                    velocidad.z = 20f;
                 }
             }
             else
             {
-                _v.z = 0;
+                velocidad.z = 0;
             }
         }
     }
@@ -51,7 +51,7 @@ public class CocheMotor : MonoBehaviour
         set
         {
             _giro = value;
-            _w.y = _giro * velocidadGiro; //al vector w
+            giroVector.y = _giro * velocidadGiro; //al vector w
             anim.SetFloat("giro", _giro); //al giro del animator
         }
     }
@@ -66,18 +66,19 @@ public class CocheMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (groundChecker.InGround)
+        if (groundChecker.BuscarSuelo)
         {
-            _v.y = 0;
+            velocidad.y = 0;
             transform.Translate(Vector3.up * groundChecker.distancia);
         }
         else
         {
-            _v.y -= (9.8f * Time.deltaTime); //gravedad
+            velocidad.y -= (9.8f * Time.deltaTime); //gravedad
 
         }
+        transform.rotation = (Quaternion.LookRotation(Vector3.Cross(transform.right, groundChecker.GetRay.normal)));
 
-        transform.Rotate(_w * Time.deltaTime); //delta time hace que se haga un transform a tiempos regulares
-        transform.Translate(_v * Time.deltaTime); 
+        transform.Rotate(giroVector * Time.deltaTime); //delta time hace que se haga un transform a tiempos regulares
+        transform.Translate(velocidad * Time.deltaTime); 
     }
 }

@@ -7,22 +7,31 @@ public class GroundChecker : MonoBehaviour
     public float distancia = 0;
 
     public LayerMask ground = ~0; // la tilde hace que to
-    private bool _inGround = false;
+    private bool suelo = false;
+    private RaycastHit hit;
 
-    public bool InGround
+
+    public bool BuscarSuelo
     {
         get
         {
-            return _inGround;
+            return suelo;
+        }
+    }
+
+    public RaycastHit GetRay
+    {
+        get
+        {
+            return hit;
         }
     }
 
     private void FixedUpdate()
     {
-        RaycastHit hit;
-        _inGround = Physics.Raycast(transform.position, -Vector3.up, out hit, 0.5f, ground);
+        suelo = Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f, ground);
 
-        if(_inGround)
+        if(suelo)
         {
             distancia = 0.5f - hit.distance;
         }

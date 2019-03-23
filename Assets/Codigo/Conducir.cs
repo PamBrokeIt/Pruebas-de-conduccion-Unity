@@ -22,13 +22,13 @@ public class Conducir : MonoBehaviour
 
     public float groundedDrag = 3f;
 
-    public float maxVelocity = 50;
+    public float maxVelocity = 10;
 
-    public float forwardAcceleration = 8000f;
-    public float reverseAcceleration = 4000f;
+    public float forwardAcceleration = 200f;
+    public float reverseAcceleration = 50f;
     float thrust = 0f;
 
-    public float turnStrength = 1000f;
+    public float turnStrength = 10f;
     float turnValue = 0f;
     //--------MOVEMENT--------
 
@@ -43,10 +43,10 @@ public class Conducir : MonoBehaviour
     public Transform[] wheelTransform = new Transform[4]; //these are the transforms for our 4 wheels
 
     // the physical transforms for the car's wheels
-    public Transform frontLeftWheel;
+    /*public Transform frontLeftWheel;
     public Transform frontRightWheel;
     public Transform rearLeftWheel;
-    public Transform rearRightWheel;
+    public Transform rearRightWheel;*/
     //--------GAMEOBJECTS--------
 
 
@@ -110,7 +110,7 @@ public class Conducir : MonoBehaviour
         // Turning
         turnValue = 0.0f;
         float turnAxis = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(turnAxis) > deadZone)
+        if (Mathf.Abs(turnAxis) > deadZone && body.velocity.sqrMagnitude > 5f)
             turnValue = turnAxis;
         //--------MOVEMENT--------
 
@@ -120,7 +120,7 @@ public class Conducir : MonoBehaviour
 
         //var emissionRate = 0;
         Suspension rueda; //referencia a la clase suspension
-        rueda = gameObject.GetComponentInChildren<Suspension>(); //referencia  a la instancia particular/local de la clase suspension de cada
+        rueda = gameObject.GetComponentInChildren<Suspension>(); //referencia  a la instancia particular/local de la clase suspension de cada rueda
 
         Debug.Log(rueda.grounded);
 
@@ -132,8 +132,8 @@ public class Conducir : MonoBehaviour
         else
         {
             body.drag = 0.1f;
-            thrust /= 100f;
-            turnValue /= 100f;
+            thrust /= 200f;
+            turnValue /= 20f;
         }
 
         for (int i = 0; i < dustTrails.Length; i++)

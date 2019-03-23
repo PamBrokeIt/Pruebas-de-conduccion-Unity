@@ -18,10 +18,11 @@ public class CocheCotroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        motor.Giro = Input.GetAxis("Horizontal");
-        float _a = 0f;
-        _a += Input.GetAxis("Jump"); //sumamos con el space, acelerando
-        _a -= Input.GetAxis("Fire1"); //restamos con el shift, frenando 
-        motor.Aceleracion = _a;
+        motor.Giro = Input.GetAxis("Horizontal"); //actualizamos el valor de giro por el input
+        float velActual = 0f;
+        velActual += Input.GetAxis("Jump"); //sumamos con el space, acelerando
+        velActual -= Input.GetAxis("Fire1"); //restamos con el shift, frenando 
+
+        motor.Aceleracion = velActual; //actualzimos la velocidad con con el valor de la suma 
     }
 }

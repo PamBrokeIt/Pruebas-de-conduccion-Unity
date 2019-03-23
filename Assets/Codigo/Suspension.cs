@@ -5,17 +5,16 @@ using UnityEngine;
 public class Suspension : MonoBehaviour
 {
     private Rigidbody coche;
-    private Transform rueda; //posicion de la rueda alrededor del coche (local es el coche)
+    private GameObject rueda; //posicion de la rueda alrededor del coche (local es el coche)
+    private Transform ruedaTransform;
 
-    public float gravityForce = 200f;
-    public float radioRueda = 1.0f;
-    public float suspLongMaxima = 0.2f;
-    public float hoverForce = 2000;
-    public float hoverHeight;
+    public float gravityForce = 20f;
+    public float hoverForce = 1000;
+    public float hoverHeight = 0.5f;
     float thrust = 0f;
     public bool grounded;
 
-    public GameObject hoverPoint;
+    public Transform hoverPoint;
 
 
     // Works like start but before it
@@ -23,14 +22,17 @@ public class Suspension : MonoBehaviour
     void Awake()
     {
         coche = transform.root.GetComponent<Rigidbody>();
-        transform.localPosition = new Vector3(0, 0, 0);
+        rueda = this.gameObject;
+        hoverPoint = rueda.transform;
+        Debug.Log(hoverPoint);
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {        
         //Vector3 ralloOrigen = rueda.position;
-        hoverHeight = suspLongMaxima + radioRueda;
+        
         Debug.Log(hoverHeight);
 
     }
@@ -47,9 +49,10 @@ public class Suspension : MonoBehaviour
 
         if (Physics.Raycast(hoverPoint.transform.position, -Vector3.up, out hit, hoverHeight))
             {
-                coche.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), hoverPoint.transform.position);
+                float compression = hit.distance;
+                coche.AddForceAtPosition(hit.normal * hoverForce * (0.5f - (hit.distance)), hoverPoint.transform.position);
                 grounded = true;
-                Debug.DrawLine(hoverPoint.transform.position, hit.point, Color.red);
+                Debug.DrawRay(hit.point, hit.normal, Color.red);
         }
         else
         {
