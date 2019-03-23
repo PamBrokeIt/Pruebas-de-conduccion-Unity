@@ -7,10 +7,10 @@ public class Suspension : MonoBehaviour
     private Rigidbody coche;
     private Transform rueda; //posicion de la rueda alrededor del coche (local es el coche)
 
-    public float gravityForce = 1000f;
+    public float gravityForce = 200f;
     public float radioRueda = 1.0f;
     public float suspLongMaxima = 0.2f;
-    public float hoverForce = 1000;
+    public float hoverForce = 2000;
     public float hoverHeight;
     float thrust = 0f;
     public bool grounded;
@@ -23,13 +23,16 @@ public class Suspension : MonoBehaviour
     void Awake()
     {
         coche = transform.root.GetComponent<Rigidbody>();
+        transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // Start is called before the first frame update
     void Start()
     {        
-        Vector3 ralloOrigen = rueda.position;
+        //Vector3 ralloOrigen = rueda.position;
         hoverHeight = suspLongMaxima + radioRueda;
+        Debug.Log(hoverHeight);
+
     }
 
 
@@ -41,12 +44,12 @@ public class Suspension : MonoBehaviour
         //--------RAYCAST--------
         //  Hover Force
         RaycastHit hit;
-        bool grounded = false;
 
         if (Physics.Raycast(hoverPoint.transform.position, -Vector3.up, out hit, hoverHeight))
-        {
-            coche.AddForceAtPosition(hoverPoint.transform.up * gravityForce, hit.point);
-            grounded = true;
+            {
+                coche.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), hoverPoint.transform.position);
+                grounded = true;
+                Debug.DrawLine(hoverPoint.transform.position, hit.point, Color.red);
         }
         else
         {
@@ -54,10 +57,12 @@ public class Suspension : MonoBehaviour
             if (transform.position.y > hoverPoint.transform.position.y)
             {
                 coche.AddForceAtPosition(hoverPoint.transform.up * gravityForce, hoverPoint.transform.position);
+                grounded = false;
             }
             else
             {
                 coche.AddForceAtPosition(hoverPoint.transform.up * -gravityForce, hoverPoint.transform.position);
+                grounded = false;
             }
         }
 

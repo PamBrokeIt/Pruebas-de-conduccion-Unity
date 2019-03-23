@@ -303,10 +303,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100314938}
+  - component: {fileID: 100314939}
   m_Layer: 0
   m_Name: suspension (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -318,12 +319,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100314937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.2, z: -0.47}
+  m_LocalPosition: {x: 0.6, y: 0.2, z: -0.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 557033369}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &100314939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100314937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7e07941d973eb4d87d4c6f59bafc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 1000
+  radioRueda: 1
+  suspLongMaxima: 0.2
+  hoverForce: 1000
+  hoverHeight: 0
+  grounded: 0
+  hoverPoint: {fileID: 100314937}
 --- !u!1 &160975931
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,10 +821,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532842685}
+  - component: {fileID: 532842686}
   m_Layer: 0
   m_Name: suspension (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -816,12 +837,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532842684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.2, z: 0.47}
+  m_LocalPosition: {x: -0.6, y: 0.2, z: 0.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 557033369}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &532842686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532842684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7e07941d973eb4d87d4c6f59bafc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 1000
+  radioRueda: 1
+  suspLongMaxima: 0.2
+  hoverForce: 1000
+  hoverHeight: 0
+  grounded: 0
+  hoverPoint: {fileID: 532842684}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +976,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &557033367
 MeshRenderer:
@@ -1029,22 +1069,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03456a259c39279409069d47b4867fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverForce: 700
-  gravityForce: 1000
-  hoverHeight: 0.8
-  hoverPoints:
-  - {fileID: 1766321554}
-  - {fileID: 532842684}
-  - {fileID: 100314937}
-  - {fileID: 2018020895}
+  gravityForce: 500
+  hoverHeight: 1.5
   groundedDrag: 3
-  maxVelocity: 10
-  forwardAcceleration: 2000
-  reverseAcceleration: 500
+  maxVelocity: 50
+  forwardAcceleration: 8000
+  reverseAcceleration: 4000
   turnStrength: 1000
   dustTrails:
   - {fileID: 0}
   - {fileID: 0}
+  wheelTransform:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  frontLeftWheel: {fileID: 0}
+  frontRightWheel: {fileID: 0}
+  rearLeftWheel: {fileID: 0}
+  rearRightWheel: {fileID: 0}
 --- !u!1 &653320207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,10 +1747,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1766321555}
+  - component: {fileID: 1766321556}
   m_Layer: 0
   m_Name: suspension
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1719,12 +1763,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766321554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.2, z: 0.47}
+  m_LocalPosition: {x: 0.6, y: 0.2, z: 0.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 557033369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1766321556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766321554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7e07941d973eb4d87d4c6f59bafc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 1000
+  radioRueda: 1
+  suspLongMaxima: 0.2
+  hoverForce: 1000
+  hoverHeight: 0
+  grounded: 0
+  hoverPoint: {fileID: 1766321554}
 --- !u!1 &1808314737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,10 +2252,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018020896}
+  - component: {fileID: 2018020897}
   m_Layer: 0
   m_Name: suspension (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2204,9 +2268,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018020895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.2, z: -0.47}
+  m_LocalPosition: {x: -0.6, y: 0.2, z: -0.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 557033369}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018020897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018020895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7e07941d973eb4d87d4c6f59bafc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 1000
+  radioRueda: 1
+  suspLongMaxima: 0.2
+  hoverForce: 1000
+  hoverHeight: 0
+  grounded: 0
+  hoverPoint: {fileID: 2018020895}

@@ -12,8 +12,8 @@ public class Conducir : MonoBehaviour
     */
 
     //--------RAYCAST--------
-    public float hoverForce = 1000;
-    public float gravityForce = 1000f;
+    //public float hoverForce = 1000;
+    //public float gravityForce = 500f;
     public float hoverHeight = 1.5f;
     //--------RAYCAST--------
 
@@ -36,7 +36,7 @@ public class Conducir : MonoBehaviour
     int layerMask;
     Rigidbody body;
 
-    public GameObject[] hoverPoints;
+    //public GameObject[] hoverPoints;
 
     public ParticleSystem[] dustTrails = new ParticleSystem[2];
 
@@ -119,10 +119,12 @@ public class Conducir : MonoBehaviour
         //--------MOVEMENT--------
 
         //var emissionRate = 0;
-        Suspension rueda;
-        rueda = gameObject.GetComponentInChildren<Suspension>();
+        Suspension rueda; //referencia a la clase suspension
+        rueda = gameObject.GetComponentInChildren<Suspension>(); //referencia  a la instancia particular/local de la clase suspension de cada
 
-        if (rueda.grounded)
+        Debug.Log(rueda.grounded);
+
+        if (rueda.grounded == true)
         {
             body.drag = groundedDrag;
             //emissionRate = 10;
