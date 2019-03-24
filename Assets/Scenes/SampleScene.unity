@@ -589,7 +589,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  hoverForce: 1000
   hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
@@ -810,8 +809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverHeight: 1.5
   groundedDrag: 3
-  maxVelocity: 10
-  forwardAcceleration: 200
+  maxVelocity: 8
+  forwardAcceleration: 400
   reverseAcceleration: 50
   turnStrength: 10
   dustTrails:
@@ -993,10 +992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  hoverForce: 1000
   hoverHeight: 0.5
   grounded: 0
-  hoverPoint: {fileID: 1100395614}
+  hoverPoint: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  hoverForce: 1000
   hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
@@ -2568,7 +2565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityForce: 20
-  hoverForce: 1000
   hoverHeight: 0.5
   grounded: 0
   hoverPoint: {fileID: 0}
